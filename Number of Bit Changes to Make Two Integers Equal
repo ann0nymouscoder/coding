@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int minChanges(int n, int k) {
+        int count = 0;
+        int cal1 = 0;
+        int cal2 = 0;
+        
+        if (n == k) {
+            return 0;
+        }
+        
+        while (n != 0 || k != 0) {
+            cal1 = n % 2;
+            cal2 = k % 2;
+            if (cal1 == 1 && cal2 == 0) {
+                count++;
+            } else if (cal1 == 0 && cal2 == 1) {
+                return -1;
+            }
+            n = n / 2;
+            k = k / 2;
+        }
+
+        if (count == 0) {
+            return -1;
+        }
+        return count;
+    }
+};
