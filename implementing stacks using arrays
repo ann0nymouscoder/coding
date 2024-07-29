@@ -1,0 +1,56 @@
+#include<iostream>
+#define n 100
+using namespace std;
+
+class stack {
+    int *arr;
+    int topIndex; // Renamed to avoid conflict with top function
+public:
+    stack() {
+        arr = new int[n];
+        topIndex = -1;
+    }
+    
+    void push(int x) {
+        if(topIndex == n - 1) {
+            cout << "stack overflow" << endl;
+            return;
+        }
+        topIndex++;
+        arr[topIndex] = x;
+    }
+    
+    void pop() {
+        if(topIndex == -1) {
+            cout << "no element to pop" << endl;
+            return;
+        }
+        topIndex--;
+    }
+    
+    int top() { // Changed return type to int
+        if(topIndex == -1) {
+            cout << "no element to pop" << endl;
+            return -1; // Return a value to indicate an error
+        }
+        return arr[topIndex];
+    }
+    
+    bool empty() {
+        return topIndex == -1;
+    }
+    
+    ~stack() {
+        delete[] arr;
+    }
+};
+
+int main() {
+    stack st;
+    st.push(1);
+    st.push(3);
+    cout << st.top() << endl;
+    st.pop();
+    cout << st.top() << endl;
+    return 0;
+}
