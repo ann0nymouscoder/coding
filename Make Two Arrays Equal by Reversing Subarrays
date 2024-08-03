@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool canBeEqual(vector<int>& target, vector<int>& arr) 
+    {
+    unordered_map<int , int> sub1;
+    for(int i:arr)
+    {
+        sub1[i]++;
+    }
+    for(int j:target)
+    {
+        sub1[j]--;
+    }
+    for(const auto&pair:sub1)
+    {
+       if(pair.second !=0)
+       {
+        return false;
+       }
+    }
+    return true;
+
+
+    }
+};
