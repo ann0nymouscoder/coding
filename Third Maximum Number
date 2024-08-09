@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        unordered_map<int, int> countMap;
+        
+        for (int num : nums) {
+            countMap[num]++;
+        }
+
+        vector<int> distinctNumbers;
+        for (const auto& entry : countMap) {
+            distinctNumbers.push_back(entry.first);
+        }
+
+        sort(distinctNumbers.begin(), distinctNumbers.end(), greater<int>());
+
+        if (distinctNumbers.size() < 3) {
+            return distinctNumbers[0];
+        }
+        
+        return distinctNumbers[2];
+    }
+};
