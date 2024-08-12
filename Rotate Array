@@ -1,0 +1,47 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) 
+    {
+        vector<int> another ;
+        another=nums;
+    int l=nums.size();
+    k=k%l;
+   if(k<l)
+   {
+    for(int i=0;i<l;i++)
+    {
+        if(i+k<l)
+        {
+            another[i+k]=nums[i];
+        }
+        else
+        {
+            int p=(i+k)%l ;
+        another[p]=nums[i];
+        }
+        
+    }
+    nums=another;
+   }
+   else
+   {
+    int c=k/l +1;
+      for(int i=0;i<l;i++)
+    {
+        if(i+c<l)
+        {
+            another[i+c]=nums[i];
+        }
+        else
+        {
+            int p=(i+c)%l ;
+        another[p]=nums[i];
+        }
+        
+    }
+     nums=another;
+   }
+
+ }
+
+};
