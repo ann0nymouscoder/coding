@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) 
+{
+    bool check = true;
+    unordered_map<int , int> dictionary;
+
+    for(auto c : arr)
+    {
+        dictionary[c]++;
+    }
+
+    for(auto c : dictionary)
+    {
+        for(auto d : dictionary)
+        {
+            if(d.first != c.first && d.second == c.second)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+};
