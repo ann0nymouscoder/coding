@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxDistance(vector<vector<int>>& arrays) {
+        if (arrays.empty()) {
+            return 0;
+        }
+
+        int minval = arrays[0][0];
+        int maxval = arrays[0].back();
+        int maxDistance = 0;
+
+        int rows = arrays.size();
+
+        for (int i = 1; i < rows; i++) {
+            if (arrays[i].empty()) {
+                continue;
+            }
+
+            maxDistance = max(maxDistance, abs(arrays[i].back() - minval));
+            maxDistance = max(maxDistance, abs(maxval - arrays[i][0]));
+
+            minval = min(minval, arrays[i][0]);
+            maxval = max(maxval, arrays[i].back());
+        }
+
+        return maxDistance;
+    }
+};
