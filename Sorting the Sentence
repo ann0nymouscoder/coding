@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string sortSentence(string s) {
+        vector<string> words(10);
+        string word;
+        stringstream ss(s);
+        
+        while (ss >> word) {
+            int pos = word.back() - '0';
+            word.pop_back();
+            words[pos - 1] = word;
+        }
+        
+        string result;
+        for (const auto& w : words) {
+            if (!w.empty()) {
+                if (!result.empty()) {
+                    result += " ";
+                }
+                result += w;
+            }
+        }
+        
+        return result;
+    }
+};
