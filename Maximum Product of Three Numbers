@@ -1,0 +1,50 @@
+class Solution {
+public:
+    int maximumProduct(vector<int>& nums) 
+    {
+        int k = nums.size();
+        if (k == 3)
+        {
+            return nums[0] * nums[1] * nums[2];
+        }
+
+        int max1 = nums[0] * nums[1] * nums[2];
+        for (int i = 0; i <= k - 3; i++)
+        {
+            for (int j = i + 1; j <= k - 2; j++)
+            {
+                for (int z = j + 1; z <= k - 1; z++)
+                {
+                    int mul = nums[i] * nums[j] * nums[z];
+                    if (mul > max1)
+                    {
+                        max1 = mul;
+                    }
+                }
+            }
+        }
+        return max1;
+    }
+};
+//Another easy and  the optimal method is
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int maximumProduct(std::vector<int>& nums) 
+    {
+        int k = nums.size();
+        if (k == 3)
+        {
+            return nums[0] * nums[1] * nums[2];
+        }
+        
+        std::sort(nums.begin(), nums.end());
+
+        int max1 = nums[k-1] * nums[k-2] * nums[k-3];
+        int max2 = nums[0] * nums[1] * nums[k-1];
+
+        return std::max(max1, max2);
+    }
+};
