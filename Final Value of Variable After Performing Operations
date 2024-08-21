@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int finalValueAfterOperations(vector<string>& operations) 
+    {
+        int k=operations.size();
+        string s="";
+        int count=0;
+        for(int i=0;i<k;i++)
+        {
+            s=operations[i];
+            if(s[1]=='+')
+            {
+                count++;
+            }
+            else
+            {
+                count--;
+            }
+        }
+        return count;
+    }
+};
