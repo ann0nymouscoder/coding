@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) 
+    {
+    int a=nums.size();
+    int i=0;
+    int k=0;
+    int l=0;
+    vector<int> pos;
+    vector<int> neg;
+    vector<int> ano;
+    for( i=0;i<a;i++)
+    {
+        if(nums[i]>=0)
+        {
+           pos.push_back(nums[i]);
+        }
+        else
+        {
+           neg.push_back(nums[i]); 
+        }
+    }
+    for(i=0;i<a;i++)
+    {
+        if(i%2==0)
+        {
+        ano.push_back(pos[k]);
+        k++;
+        }
+        else
+        {
+            ano.push_back(neg[l]);
+            l++;
+        }
+    }
+    return ano;    
+    }
+};
