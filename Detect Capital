@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool detectCapitalUse(string s) 
+    {
+        int k = s.length();
+        for(int i = 1; i < k; i++)
+        {
+            if((s[0] - 0 > 64 && s[0] - 0 < 91) && (s[i] - 0 > 64 && s[i] - 0 < 91)) 
+            {
+                if(i == k - 1) continue;
+                if(s[i + 1] - 0 > 96 && s[i + 1] - 0 < 123) return false;
+            }
+            else if((s[0] - 0 > 64 && s[0] - 0 < 91) && (s[i] - 0 > 96 && s[i] - 0 < 123)) 
+            {
+                if(i == k - 1) continue;
+                if(s[i + 1] - 0 > 64 && s[i + 1] - 0 < 91) return false;
+            }
+            else if((s[0] - 0 > 96 && s[0] - 0 < 123) && (s[i] - 0 > 96 && s[i] - 0 < 123)) 
+            {
+                continue;
+            }
+            else
+            {
+                return false;
+            }
+        }    
+        return true;
+    }
+};
