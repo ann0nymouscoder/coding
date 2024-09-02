@@ -1,0 +1,39 @@
+#include <cctype>
+
+class Solution {
+public:
+    string reverseVowels(string s) 
+    {
+        int k = s.length();
+        vector<char> vowels;
+        string s1 = s;
+        
+        for (int i = 0; i < k; i++)
+        {
+            if (isVowel(s[i]))
+            {
+                vowels.push_back(s[i]);
+            }
+        }
+        
+        reverse(vowels.begin(), vowels.end());
+        
+        int z = 0;
+        for (int l = 0; l < k; l++)
+        {
+            if (isVowel(s1[l]))
+            {
+                s1[l] = vowels[z++];
+            }
+        }
+        
+        return s1;
+    }
+
+private:
+    bool isVowel(char c)
+    {
+        c = tolower(c);
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+};
