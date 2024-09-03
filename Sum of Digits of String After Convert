@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int getLucky(string s, int k) 
+    {
+        unordered_map<char, int> map;
+        for(char c = 'a'; c <= 'z'; ++c) {
+            map[c] = c - 'a' + 1;
+        }
+
+        string numString = "";
+        for(char ch : s) {
+            numString += to_string(map[ch]);
+        }
+
+        int sum = 0;
+        for(int i = 0; i < k; ++i) {
+            sum = 0;
+            for(char digit : numString) {
+                sum += digit - '0';
+            }
+            numString = to_string(sum);
+        }
+
+        return sum;
+    }
+};
