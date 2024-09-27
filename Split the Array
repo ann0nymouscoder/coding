@@ -1,0 +1,13 @@
+class Solution {
+public:
+    bool isPossibleToSplit(vector<int>& nums) {
+        unordered_map<int, int> m; 
+        for(auto i = nums.begin(); i != nums.end(); ++i) {
+            m[*i]++; 
+            if(m[*i] > 2) {
+                return false; 
+            }
+        }
+        return true; 
+    }
+};
