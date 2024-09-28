@@ -1,0 +1,27 @@
+class Solution {
+public:
+    long long maximumTotalSum(vector<int>& maximumHeight) {
+        sort(maximumHeight.begin(), maximumHeight.end());
+        long long currMax = 0;
+        long long sum = 0;
+        for (int i = maximumHeight.size()-1; i >= 0; i--){
+            // 2  3  3  4
+            // 1  1  1  2  3  4  4
+            // 2  3  5  6  6  6  6  7
+            if ( i == maximumHeight.size()-1){
+                sum += maximumHeight[i];
+                currMax = maximumHeight[i];
+            } else {
+                if(currMax > maximumHeight[i]){
+                    sum += maximumHeight[i];
+                    currMax = maximumHeight[i];
+                } else { 
+                     currMax = currMax - 1;
+                     if ( currMax == 0) return -1;
+                    sum += currMax;
+                }
+            }
+        }
+        return sum;
+    }
+};
