@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isCircularSentence(string sentence) 
+    {
+        int k=sentence.length();
+    char a=sentence[0];
+    char b=sentence[k-1];
+    if(a!=b)
+    {
+        return false;
+    }
+    for(int i=1;i<k;i++)
+    {
+        if(sentence[i]==' ')
+        {
+            if(sentence[i-1]!=sentence[i+1])
+            {
+                return false;
+            }
+            else
+            {
+                continue;
+            }
+        }
+    } 
+    return true;   
+    }
+};
