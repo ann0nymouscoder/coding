@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) 
+    {
+    int k=A.size();
+    vector<int>C;
+    int s[50];
+    for(int i=0;i<k;i++)
+    {
+        for(int l=0;l<k;l++)
+        {
+            if(A[i]==B[l])
+            {
+             if(i>l)
+               { 
+                s[i]++;
+               }
+            
+             else if(l>i)
+             {
+                s[l]++;
+             }
+             else
+             {
+                s[i]++;
+             }
+            }
+        }
+    }
+    int sum=0;
+    for(int i=0;i<k;i++)
+    {
+        sum=sum+s[i];
+     C.push_back(sum);
+    }
+    return C;
+    }
+};
