@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int maximumValue(vector<string>& strs) 
+    {
+        int k = strs.size();
+        int m = 0;
+        int maxi = 0;
+
+        for (int i = 0; i < k; i++) {
+            string p = strs[i];
+            bool isNumber = true;
+
+            for (char c : p) {
+                if (!isdigit(c)) {
+                    isNumber = false;
+                    break;
+                }
+            }
+
+            if (isNumber) {
+                m = stoi(p);
+            } else {
+                m = p.length();
+            }
+
+            maxi = max(maxi, m);
+        }
+
+        return maxi;    
+    }
+};
