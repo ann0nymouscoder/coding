@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int furthestDistanceFromOrigin(string moves) 
+    {
+        int left = 0;
+        int right = 0;
+        int count = 0;
+        int k = moves.length();
+
+        for (int i = 0; i < k; i++) {
+            if (moves[i] == 'L') {
+                left++;
+            } else if (moves[i] == 'R') {
+                right++;
+            }
+        }
+
+        int u = k - (left + right);
+        return abs(left - right) + u;
+    }
+};
