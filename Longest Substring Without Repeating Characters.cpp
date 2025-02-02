@@ -12,3 +12,27 @@ public:
         return result;
     }
 };
+another approach
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) 
+    {
+        int maxLen=0;
+    int left=0;
+    int right=0;
+    set<char> megaSet;
+    while(right<s.length())
+    {
+        if(megaSet.find(s[right])==megaSet.end())
+        {
+            megaSet.insert(s[right++]);
+            maxLen=max(maxLen,(int)megaSet.size());
+        }
+        else
+        {
+            megaSet.erase(s[left++]);
+        }
+    }
+    return maxLen;
+    }
+};
