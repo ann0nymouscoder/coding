@@ -1,17 +1,32 @@
-#include <algorithm> // For std::min
-
 class Solution {
-public:
-    int commonFactors(int a, int b) {
-        int count = 0;
-        int limit = std::min(a, b); // Find the smaller number
-        
-        for (int i = 1; i <= limit; ++i) {
-            if (a % i == 0 && b % i == 0) { // Check if 'i' is a common factor
-                ++count; // Increment count
+public :
+    int commonFactors(int a, int b) 
+    {
+        unordered_map<int,int> first;
+        int i=1;
+        int count=0;
+        while(i<=a)
+        {
+        if(a%i==0)
+        {
+            first[i]++;
+        }
+        i++;
+        } 
+        i=1;
+        while(i<=b)
+        {
+        if(b%i==0)
+        {
+            first[i]++;
+            if(first[i]>1)
+            {
+                count++;
             }
         }
-        
-        return count; // Return the total count of common factors
+        i++;
+        }
+        return count;
     }
+    
 };
